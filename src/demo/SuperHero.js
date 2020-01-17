@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 export default class SuperHero extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      name: ''
-    }
+
     this.select = this.select.bind(this)
   }
   select() {
@@ -24,23 +22,30 @@ export default class SuperHero extends Component {
           <h1>{hero.name}</h1>
           <button onClick={this.select}>Add to team</button>
         </header>
-        <div>
+        <div
+          className={`hero-details ${
+            hero.biography.alignment === 'good' ? 'good' : 'bad'
+          }`}
+        >
           <img src={hero.images.sm} alt={hero.name} />
-          <p>{hero.work.occupation}</p>
+          <div>
+            <p>
+              {hero.work.occupation} - {hero.biography.alignment}
+            </p>
 
-          <hr />
+            <hr />
 
-          <dl>
-            <dt>Full Name</dt>
-            <dd>{hero.biography.fullName}</dd>
-            <dt>Alterego</dt>
-            <dd>{hero.biography.alterEgos}</dd>
-            <dt>Place of Birth</dt>
-            <dd>{hero.biography.placeOfBirth}</dd>
-            <dt>Publisher</dt>
-            <dd>{hero.biography.publisher}</dd>
-          </dl>
-          {/* <pre>{JSON.stringify(hero.biography, null, 2)}</pre> */}
+            <dl>
+              <dt>Full Name</dt>
+              <dd>{hero.biography.fullName}</dd>
+              <dt>Alterego</dt>
+              <dd>{hero.biography.alterEgos}</dd>
+              <dt>Place of Birth</dt>
+              <dd>{hero.biography.placeOfBirth}</dd>
+              <dt>Publisher</dt>
+              <dd>{hero.biography.publisher}</dd>
+            </dl>
+          </div>
         </div>
       </div>
     )

@@ -42,7 +42,7 @@ export default function Demo() {
     switch (action.type) {
       case 'Add-Member':
         // TODO: localstorage
-        return [...store, action.payload]
+        return [...new Set([...store, action.payload])]
       case 'Remove-Member':
         // TODO: localstorage
         return store.filter(m => m.id !== action.payload)
@@ -75,7 +75,16 @@ export default function Demo() {
         />
         <Filters
           title={'Race'}
-          filters={['Human', 'Cyborg']}
+          filters={[
+            'Asgardian',
+            'Human',
+            'Mutant',
+            'Human-Kree',
+            // 'Human-Vulcan',
+            // 'Rodian',
+            'Cyborg',
+            'Demon'
+          ]}
           selected={state.race}
           selectFilter={dispatch}
         />

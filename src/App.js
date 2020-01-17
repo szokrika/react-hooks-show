@@ -23,7 +23,7 @@ function App() {
             className={`battery ${parseInt(batteryLevel) < 10 &&
               'danger'} ${parseInt(batteryLevel) < 20 && 'warning'}`}
           >
-            {batteryLevel}
+            {batteryLevel}%
           </span>
         </header>
         <nav>

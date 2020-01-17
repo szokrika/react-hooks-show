@@ -4,6 +4,7 @@ import StateClass from './StateClass'
 import StateHooks from './StateHooks'
 import EffectClass from './EffectClass'
 import EffectHooks from './EffectHooks'
+import LayoutEffectHooks from './LayoutEffectHooks'
 import ContextClass from './ContextClass'
 import ContextHooks from './ContextHooks'
 import ReducerHooks from './ReducerHooks'
@@ -75,6 +76,11 @@ export default function Examples({ type }) {
       {type === 'imperative' && (
         <section className="example imperative">
           <ImperativeHooks />
+        </section>
+      )}
+      {type === 'layouteffect' && (
+        <section className="example layouteffect">
+          <LayoutEffectHooks />
         </section>
       )}
       {type === 'debugvalue' && (

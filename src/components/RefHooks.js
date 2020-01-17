@@ -5,8 +5,10 @@ import useElementSize from '../hooks/custom/useElementSize'
 
 export default function RefHooks() {
   const [value, setValue] = useState('test value')
+  const [list, setList] = useState([])
   const [rect, ref] = useElementSize()
   const refInput = useRef()
+  const listId = useRef(0)
 
   useEffect(() => {
     refInput.current.focus()
@@ -14,9 +16,16 @@ export default function RefHooks() {
 
   const submit = e => {
     e.preventDefault()
-    alert(value)
+    if (!value) return
+    listId.current = list.reduce((acc, item) => Math.max(acc, item.id), 0)
+    setList([...list, { id: listId.current + 1, value }])
     setValue('')
     refInput.current.focus()
+  }
+  const remove = id => {
+    console.log('---------- id ----------->', id)
+    const newList = list.filter(item => item.id !== id)
+    setList(newList)
   }
   return (
     <div>
@@ -35,8 +44,15 @@ export default function RefHooks() {
           onChange={e => setValue(e.target.value)}
         />
         <button className="btn" type="submit">
-          Send and clear
+          Save and clear
         </button>
+        <ul>
+          {list.map(l => (
+            <li key={l.id}>
+              {l.value} <button onClick={() => remove(l.id)}>remove</button>
+            </li>
+          ))}
+        </ul>
       </form>
     </div>
   )

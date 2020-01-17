@@ -110,6 +110,12 @@ h1 {
   align-items: center;
   font-size: 18px;
   font-weight: bold;
+  margin-top: 40px;
+}
+section {
+  .btn {
+    margin-top: 0;
+  }
 }
 
 @keyframes App-logo-spin {

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
-import App from './App'
 import { ThemeContextProvider } from './components/store'
+import App from './App'
 // import App from './demo/Demo'
 import * as serviceWorker from './serviceWorker'
 

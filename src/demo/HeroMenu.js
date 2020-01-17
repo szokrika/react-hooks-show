@@ -1,64 +1,49 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
 
 import { getHeroes } from '../api/api'
 
-export default class HeroMenu extends Component {
-  constructor(props) {
-    super(props)
+export default function HeroMenu({ filters, select: propSelect }) {
+  const [heroes, setHeroes] = useState([])
+  const [original, setOriginal] = useState([])
+  const [selected, setSelected] = useState(null)
 
-    this.state = {
-      heroes: [],
-      original: [],
-      selected: null
-    }
+  useEffect(() => {
+    getData(filters)
+  }, [filters])
 
-    this.handleChange = this.handleChange.bind(this)
-    this.getData = this.getData.bind(this)
-  }
-  componentDidMount() {
-    this.getData(this.props.filters)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.getData(nextProps.filters)
-  }
-
-  async getData(filters) {
+  const getData = async filters => {
     const heroes = await getHeroes(filters)
     const options = heroes.map(h => ({ value: h.id, label: h.name }))
-    this.setState({ heroes: options, original: heroes })
+    setHeroes(options)
+    setOriginal(heroes)
   }
 
-  handleChange(selected) {
-    this.setState({ selected })
-    this.props.select(selected)
+  const handleChange = selected => {
+    setSelected({ selected })
+    propSelect(selected)
   }
 
-  render() {
-    const { heroes, selected } = this.state
-
-    return (
-      <Select
-        options={heroes}
-        defaultValue={heroes[0]}
-        value={selected}
-        onChange={this.handleChange}
-        styles={{
-          singleValue: base => ({
-            ...base,
-            color: '#000'
-          }),
-          control: base => ({
-            ...base,
-            color: '#000'
-          }),
-          menu: base => ({
-            ...base,
-            color: '#000'
-          })
-        }}
-      />
-    )
-  }
+  return (
+    <Select
+      options={heroes}
+      defaultValue={heroes[0]}
+      value={selected}
+      onChange={handleChange}
+      styles={{
+        singleValue: base => ({
+          ...base,
+          color: '#000'
+        }),
+        control: base => ({
+          ...base,
+          color: '#000'
+        }),
+        menu: base => ({
+          ...base,
+          color: '#000'
+        })
+      }}
+    />
+  )
 }

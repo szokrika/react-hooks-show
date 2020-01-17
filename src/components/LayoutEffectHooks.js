@@ -9,12 +9,13 @@ export default function LayoutEffectHooks() {
   const [title, setTitle] = useState('')
   useEffect(() => {
     // this is async
-    // console.log('---------- Effect  ----------->')
-    setTitle('updated by useEffect')
+    console.log('---------- Effect  ----------->')
+    // setTitle('updated by useEffect')
   }, [title])
+
   useLayoutEffect(() => {
     // this is sync
-    // console.log('---------- Layout Effect  ----------->')
+    console.log('---------- Layout Effect  ----------->')
     setTitle('updated by useLayoutEffect')
   }, [title])
 

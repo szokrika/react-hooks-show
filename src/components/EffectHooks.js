@@ -12,6 +12,7 @@ export default function EffectHooks({ id = 1 }) {
         setPhoto(json)
         setLoading(false)
       })
+    console.log('---------- aaaaa ----------->')
   }, [id])
 
   return (

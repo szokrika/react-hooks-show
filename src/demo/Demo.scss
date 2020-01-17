@@ -1,0 +1,121 @@
+.demo {
+  background: darkslateblue;
+  color: white;
+  height: 100vh;
+  padding: 0 30px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-columns: 25% 1fr 25%;
+  grid-template-areas:
+    'nav nav nav'
+    'left middle right'
+    'footer footer footer';
+
+  @media (min-width: 481px) and (max-width: 768px) {
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 1fr repeat(2, min-content);
+    grid-template-areas:
+      'nav nav'
+      'middle middle'
+      'left right'
+      'footer footer';
+  }
+
+  @media (max-width: 480px) {
+    grid-gap: 15px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content) 1fr repeat(2, min-content);
+    grid-template-areas:
+      'nav'
+      'left'
+      'middle'
+      'right'
+      'footer';
+  }
+}
+
+header {
+  grid-area: nav;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(#fff, $alpha: 0.3);
+  height: 50px;
+  padding: 0 15px;
+  nav {
+    display: flex;
+    width: 100%;
+    span {
+      margin-left: auto;
+    }
+  }
+}
+aside {
+  grid-area: left;
+}
+section {
+  grid-area: right;
+}
+main {
+  grid-area: middle;
+}
+footer {
+  grid-area: footer;
+}
+
+form.hide {
+  display: none;
+  &.show {
+    display: inline-block;
+  }
+}
+label.big {
+  font-size: 2em;
+}
+input.big {
+  margin-top: 15px;
+  background: white;
+  display: block;
+  line-height: 2em;
+  padding: 0 1em;
+  font-size: inherit;
+}
+
+.filters {
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    padding: 10px;
+    background: rgba(#000, 0.2);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-top: 1px;
+    line-height: 2em;
+    padding-left: 30px;
+    border-bottom: 1px solid rgba(#000, 0.2);
+    cursor: pointer;
+    &.on {
+      background: rgba(#fff, 0.2);
+    }
+  }
+}
+
+dl {
+  display: grid;
+  grid-row-gap: 10px;
+  grid-template-columns: max-content 1fr;
+}
+.hero {
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+}

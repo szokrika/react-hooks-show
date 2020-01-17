@@ -1,0 +1,122 @@
+body {
+  background-color: #282c34;
+}
+.App {
+  background-color: #282c34;
+  color: white;
+  height: 100vh;
+  width: 80vw;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 0;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 2vw;
+  margin-bottom: 15px;
+
+  &.online {
+    background-color: palegreen;
+  }
+  &.offline {
+    background-color: palevioletred;
+  }
+
+  .battery {
+    padding: 2px 10px;
+    margin-left: 5px;
+    background-color: green;
+    color: inherit;
+    position: relative;
+    &:after {
+      content: '';
+      height: 50%;
+      width: 5px;
+      height: 12px;
+      position: absolute;
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: inherit;
+    }
+    &.warning {
+      background-color: palegoldenrod;
+    }
+    &.danger {
+      background-color: palevioletred;
+    }
+  }
+}
+
+main {
+  padding: 2vw;
+
+  li {
+    line-height: 1.8em;
+  }
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    color: white;
+    margin: 0 15px;
+  }
+}
+section,
+h1 {
+  padding: 0 15px;
+}
+.example {
+  display: flex;
+  justify-content: flex-start;
+  > div {
+    margin-right: 15px;
+  }
+}
+.App-link {
+  color: #61dafb;
+}
+
+.input {
+  line-height: 20px;
+  font-size: 18px;
+}
+
+.btn {
+  line-height: 20px;
+  min-width: 30px;
+  display: inline-flex;
+  margin-right: 7px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

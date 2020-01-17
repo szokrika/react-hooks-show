@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ThemeContextProvider } from './store'
+
 import StateClass from './StateClass'
 import StateHooks from './StateHooks'
 import EffectClass from './EffectClass'
@@ -20,7 +20,7 @@ export default function Examples({ type }) {
     setCount(parseInt(Math.floor(Math.random() * Math.floor(100))))
 
   return (
-    <ThemeContextProvider>
+    <>
       <h1>Examples</h1>
       {type === 'state' && (
         <section className="state">
@@ -91,6 +91,6 @@ export default function Examples({ type }) {
       <button className="btn" onClick={trigger}>
         Trigger rerender
       </button>
-    </ThemeContextProvider>
+    </>
   )
 }
